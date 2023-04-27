@@ -33,7 +33,7 @@ class DotDict(dict):
 
 def build_model(model_name: str, configs: dict):
     model_dict = {
-        'test': 'from test import Net'
+        'test': 'from model import Net'
     }
     exec(model_dict[model_name])
     exec('print(123,{})'.format(configs))

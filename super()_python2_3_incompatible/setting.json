@@ -1,0 +1,81 @@
+{
+    "EOL" : 1,
+
+    "epochs" : 200,
+    "use_cuda" : true,
+    "earlystop_round" : 8,
+    "learning_rate" : 0.001,
+    "weight_decay" : 0.0001,
+    "loss" : "MSE",
+
+    "time_step" : 6,
+    "seq_len" : 6,
+    "pred_len" : 3,
+    "feature_num" : 6,
+    "input_size" : 6,
+    "output_dim" : 7,
+    "output_size" : 7,
+    "pad_flag" : false,
+    "batch_size" : 30,
+
+    "d_model" : 12,
+    "hidden_size" : 32,
+    "kernel_size" : 3,
+    "stride" : 1,
+    "moving_avg" : 3,
+    "dropout" : 0.5,
+    "activation" : "relu",
+    "decoder_layers" : 2,
+
+    "data_path" : "Exp_Main/BO_data_HIs/",
+    "fig_save_path" : "Exp_Main/figure/",
+    "model_save_path" : "Exp_Main/checkpoint/",
+
+
+    "optimizer" : "Adam",
+    "optimizer_params" : {
+        "lr" : 0.001,
+        "betas" : [
+            0.9,
+            0.999
+        ],
+        "eps" : 1e-08,
+        "weight_decay" : 0,
+        "amsgrad" : false
+    },
+
+
+    "scheduler" : "ReduceLROnPlateau",
+    "scheduler_params" : {
+        "mode" : "min",
+        "factor" : 0.5,
+        "patience" : 4,
+        "verbose" : true,
+        "threshold" : 0.0001,
+        "threshold_mode" : "rel",
+        "cooldown" : 0,
+        "min_lr" : 0,
+        "eps" : 1e-08
+    },
+
+
+    "model" : {
+        "GRU" : {
+            "feature_num" : 7,
+            "hidden_size" : 32,
+            "output_dim" : 1
+        },
+        "MLP" : {
+            "feature_num" : 7,
+            "hidden_size" : 32,
+            "output_dim" : 1
+        },
+        "ProgressiveDecompMLP" : {
+            "seq_len" : 6,
+            "feature_num" : 7,
+            "hidden_size" : 32,
+            "pre_len" : 3,
+            "output_dim" : 1
+        }
+    }
+}
