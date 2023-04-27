@@ -5,11 +5,10 @@ from nni.retiarii import model_wrapper
 
 
 @model_wrapper      # this decorator should be put on the out most
-class Net(nn.Module):
+class Model(nn.Module):
     def __init__(self, configs):
         super().__init__()
-    # def __init__(self):
-    #     super().__init__()
+        print('type(configs): {}\nconfigs: {}'.format(type(configs), configs))
         # 如果是super(Net, self).__init__()，则会报错：TypeError: super() takes at least 1 argument (0 given)
         self.conv1 = nn.Conv2d(1, 32, 3, 1)
         self.conv2 = nn.Conv2d(32, 64, 3, 1)

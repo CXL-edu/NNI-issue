@@ -38,13 +38,22 @@ def build_model(model_name: str, configs: dict):
     exec(model_dict[model_name])
     exec('print(123,{})'.format(configs))
     model = exec("Net(DotDict({})).float()".format(configs))
-    # model = exec("Net(DotDict({})).float()".format(configs))
+    # model = exec("Net().float()")
     return model
 
 
 if __name__ == '__main__':
     b = load(open('setting.json'))
     b.update({'k': 3, 'y': 32, 'configs':{}})
-    moedl = build_model('test', b)
+    # moedl = build_model('test', b)
     # model = Net(b)
+
+    import argparse
+    from model import Net
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--k', type=int, default=1)
+    args = parser.parse_args()
+    # k = {'a':1, 'b':2, 'c':3}
+    model = Net(args)
+
 
